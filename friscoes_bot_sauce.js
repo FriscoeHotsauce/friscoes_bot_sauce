@@ -32,10 +32,31 @@ client.on("message", receivedMessage => {
     //receivedMessage.channel.send("F", { tts: false });
   }
 
-  if (receivedMessage.content.includes("good bot")) {
+  if (receivedMessage.content.toLowerCase().includes("good bot")) {
     receivedMessage.channel.send(
       receivedMessage.author.toString() + " Thanks!",
       { tts: false }
+    );
+  }
+
+  if (receivedMessage.content.toLowerCase().includes("bad bot")) {
+    receivedMessage.react("😰");
+    if (Math.floor(Math.random() * 101) == 57) {
+      receivedMessage.channel.send(
+        receivedMessage.author.toString() + " No u",
+        { tts: true }
+      );
+    }
+  }
+
+  if (receivedMessage.content.toLowerCase().includes("spaghetti")) {
+    receivedMessage.react("🍝");
+  }
+
+  if (receivedMessage.content.toLowerCase().includes("poopsenders.com")) {
+    receivedMessage.delete();
+    receivedMessage.channel.send(
+      receivedMessage.author.toString() + " how dare you."
     );
   }
 });
